@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Consultancy - Auth</title>
+    <title>Sign In - Emmanuel AI Consultancy</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header class="site-header">
         <div class="container">
-            <h1>Welcome to Emmanuel AI Consultancy</h1>
-            <p>Your trusted partner in artificial intelligence solutions</p>
+            <h1>Emmanuel AI Consultancy</h1>
+            <p>Sign in to access your AI dashboard</p>
             <nav class="main-nav">
-                <a href="#home" class="active">Home</a>
-                <a href="#services">Services</a>
-                <a href="#pricing">Pricing</a>
-                <a href="#contact">Contact</a>
+                <a href="index.html">Home</a>
+                <a href="index.html#services">Services</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="waitlist.html">Waitlist</a>
+                <a href="auth.html" class="active">Sign In</a>
             </nav>
         </div>
     </header>
@@ -23,9 +24,42 @@
     <main class="content">
         <section>
             <div class="container">
-                <h2>Get Started</h2>
-                <p>Ready to transform your business with AI? Begin your free discovery session with our expert consultants.</p>
-                <a href="#services" class="cta-button">Book a Consultation</a>
+                <div class="auth-tabs">
+                    <button id="tab-login" class="active" type="button">Sign In</button>
+                    <button id="tab-signup" type="button">Sign Up</button>
+                </div>
+
+                <div id="form-login" class="auth-card">
+                    <h2>Sign In</h2>
+                    <p class="subtitle">Access your AI consultancy account</p>
+                    <form>
+                        <label for="login-email">Email Address *</label>
+                        <input type="email" id="login-email" name="email" placeholder="you@example.com" required>
+                        <label for="login-password">Password *</label>
+                        <input type="password" id="login-password" name="password" placeholder="Your Password" required>
+                        <button type="submit" class="cta-button" style="width:100%">Sign In</button>
+                    </form>
+                    <p class="auth-meta">Forgot your password? <a href="#">Reset it here</a></p>
+                </div>
+
+                <div id="form-signup" class="auth-card" style="display:none">
+                    <h2>Create Account</h2>
+                    <p class="subtitle">Join us and start your AI journey</p>
+                    <form>
+                        <label for="signup-name">Full Name *</label>
+                        <input type="text" id="signup-name" name="name" placeholder="John Doe" required>
+                        <label for="signup-email">Email Address *</label>
+                        <input type="email" id="signup-email" name="email" placeholder="you@example.com" required>
+                        <label for="signup-password">Password *</label>
+                        <input type="password" id="signup-password" name="password" placeholder="Create a Password" required>
+                        <button type="submit" class="cta-button" style="width:100%">Create Account</button>
+                    </form>
+                    <p class="auth-meta">Already have an account? <a href="#" id="switch-to-login">Sign in</a></p>
+                </div>
+
+                <div style="text-align:center; margin-top: 2rem;">
+                    <a href="index.html" class="back-link">← Back to Home</a>
+                </div>
             </div>
         </section>
     </main>
@@ -35,5 +69,37 @@
             <p>&copy; 2026 Emmanuel AI Consultancy. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        var loginTab = document.getElementById('tab-login');
+        var signupTab = document.getElementById('tab-signup');
+        var loginForm = document.getElementById('form-login');
+        var signupForm = document.getElementById('form-signup');
+
+        function showLogin() {
+            loginForm.style.display = 'block';
+            signupForm.style.display = 'none';
+            loginTab.classList.add('active');
+            signupTab.classList.remove('active');
+        }
+
+        function showSignup() {
+            loginForm.style.display = 'none';
+            signupForm.style.display = 'block';
+            signupTab.classList.add('active');
+            loginTab.classList.remove('active');
+        }
+
+        loginTab.addEventListener('click', showLogin);
+        signupTab.addEventListener('click', showSignup);
+
+        var switchLink = document.getElementById('switch-to-login');
+        if (switchLink) {
+            switchLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                showLogin();
+            });
+        }
+    </script>
 </body>
 </html>
