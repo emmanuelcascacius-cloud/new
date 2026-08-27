@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - Emmanuel AI Consultancy</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .services-hero {
+            background: linear-gradient(180deg, #eff6ff 0%, var(--color-bg) 100%);
+            padding: var(--space-3xl) 0;
+            text-align: center;
+        }
+        .services-hero h2 { font-size: 2.5rem; margin-bottom: var(--space-md); }
+        .services-hero p { max-width: 720px; margin: 0 auto var(--space-xl); font-size: 1.125rem; }
+        .services-hero .hero-ctas { display: flex; justify-content: center; gap: var(--space-md); flex-wrap: wrap; }
+        .service-detail {
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+            gap: var(--space-2xl);
+            align-items: start;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-2xl);
+            margin-bottom: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+        .service-detail:hover { box-shadow: var(--shadow-lg); border-color: var(--color-primary); }
+        .service-detail .service-head { position: sticky; top: var(--space-md); }
+        .service-detail .service-head .icon {
+            width: 72px; height: 72px; border-radius: var(--radius-lg);
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            color: #fff; display: inline-flex; align-items: center;
+            justify-content: center; font-size: 2.25rem; margin-bottom: var(--space-md);
+        }
+        .service-detail .service-head h3 { color: var(--color-text); font-size: 1.5rem; margin-bottom: var(--space-xs); }
+        .service-detail .service-head .tagline { color: var(--color-primary); font-weight: 600; font-size: 0.95rem; }
+        .service-detail .service-body p { color: var(--color-text); margin-bottom: var(--space-md); }
+        .service-detail h4 {
+            color: var(--color-primary); font-size: 1rem;
+            margin-top: var(--space-md); margin-bottom: var(--space-xs);
+            text-transform: uppercase; letter-spacing: 0.05em;
+        }
+        .feature-list { list-style: none; padding: 0; margin: 0 0 var(--space-md) 0; }
+        .feature-list li { padding: var(--space-xs) 0; color: var(--color-text); border-bottom: 1px dashed var(--color-border); display: flex; gap: var(--space-sm); }
+        .feature-list li:last-child { border-bottom: none; }
+        .feature-list li::before { content: "\2713"; color: var(--color-success); font-weight: 700; flex-shrink: 0; }
+        .use-case {
+            background: var(--color-bg); border-left: 4px solid var(--color-accent);
+            padding: var(--space-md); border-radius: var(--radius-sm);
+            font-style: italic; color: var(--color-text-muted); margin-top: var(--space-md);
+        }
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-lg); margin-top: var(--space-xl);
+        }
+        .process-step {
+            text-align: center; padding: var(--space-lg); background: var(--color-surface);
+            border: 1px solid var(--color-border); border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm); transition: var(--transition);
+        }
+        .process-step:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--color-primary); }
+        .process-step .step-number {
+            width: 48px; height: 48px; margin: 0 auto var(--space-md);
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            color: #fff; border-radius: var(--radius-full);
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: 1.25rem;
+        }
+        .process-step h4 { color: var(--color-text); margin-bottom: var(--space-xs); }
+        .process-step p { font-size: 0.95rem; }
+        .services-cta {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            color: #fff; text-align: center; padding: var(--space-3xl) var(--space-lg);
+            border-radius: var(--radius-lg); margin: var(--space-2xl) auto; max-width: 900px;
+        }
+        .services-cta h2 { color: #fff; margin-bottom: var(--space-md); }
+        .services-cta h2::after { background: linear-gradient(90deg, #fff, rgba(255,255,255,0.5)); }
+        .services-cta p { color: rgba(255,255,255,0.95); font-size: 1.1rem; max-width: 640px; margin: 0 auto var(--space-xl); }
+        .services-cta .cta-button { background: #fff; color: var(--color-primary) !important; margin: 0 var(--space-xs); }
+        .services-cta .cta-button:hover { background: var(--color-bg); transform: translateY(-2px); }
+        .services-cta .cta-button.secondary { background: transparent; color: #fff !important; border: 2px solid #fff; }
+        .services-cta .cta-button.secondary:hover { background: #fff; color: var(--color-primary) !important; }
+        @media (max-width: 768px) {
+            .service-detail { grid-template-columns: 1fr; gap: var(--space-lg); }
+            .service-detail .service-head { position: static; text-align: center; }
+            .services-hero h2 { font-size: 1.875rem; }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1>Emmanuel AI Consultancy</h1>
+            <p>End-to-end AI services that drive real business results</p>
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <a href="services.html" class="active">Services</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="waitlist.html">Waitlist</a>
+                <a href="auth.html">Sign In</a>
+            </nav>
+        </div>
+    </header>
+    <main class="content">
+        <section class="services-hero">
+            <div class="container">
+                <h2>Our Services</h2>
+                <p>We partner with you across the entire AI journey &mdash; from identifying the right opportunities to deploying production-ready solutions and training your team to scale them. Every engagement is tailored to your industry, your data, and your goals.</p>
+                <div class="hero-ctas">
+                    <a href="#service-list" class="cta-button">Explore Services</a>
+                    <a href="index.html#contact" class="cta-button secondary">Book a Free Consultation</a>
+                </div>
+            </div>
+        </section>
+        <section id="service-list">
+            <div class="container">
+
+
+                <article class="service-detail">
+                    <div class="service-head">
+                        <div class="icon">&#129504;</div>
+                        <h3>AI Strategy &amp; Roadmapping</h3>
+                        <p class="tagline">The right plan before the right model.</p>
+                    </div>
+                    <div class="service-body">
+                        <p>Most AI initiatives fail not because of the technology, but because the strategy is unclear. We work with your leadership team to identify the highest-impact AI opportunities, evaluate feasibility, and build a pragmatic 12-month adoption roadmap aligned to your business goals and budget.</p>
+                        <h4>What you get</h4>
+                        <ul class="feature-list">
+                            <li>Executive AI readiness assessment and maturity audit</li>
+                            <li>Discovery workshops to surface and prioritize use cases</li>
+                            <li>Data, infrastructure, and talent gap analysis</li>
+                            <li>ROI modeling and business case development</li>
+                            <li>A phased 6&ndash;12 month implementation roadmap</li>
+                            <li>Governance, ethics, and risk framework</li>
+                        </ul>
+                        <h4>Ideal for</h4>
+                        <p>Companies that are curious about AI but unsure where to start, or teams that have experimented but lack a unified direction.</p>
+                        <div class="use-case">&ldquo;A regional logistics company used our roadmap to cut 30% of manual dispatch work within 9 months &mdash; without hiring a single data scientist.&rdquo;</div>
+                    </div>
+                </article>
+
+                <article class="service-detail">
+                    <div class="service-head">
+                        <div class="icon">&#9881;&#65039;</div>
+                        <h3>Custom AI Development</h3>
+                        <p class="tagline">Bespoke models built for your workflows.</p>
+                    </div>
+                    <div class="service-body">
+                        <p>Off-the-shelf AI rarely fits messy, real-world business processes. We design, train, and deploy custom machine learning and deep learning models that integrate directly into your products, operations, and decision-making.</p>
+                        <h4>What we build</h4>
+                        <ul class="feature-list">
+                            <li>Natural language processing (chatbots, summarization, sentiment, document AI)</li>
+                            <li>Computer vision (quality inspection, object detection, OCR)</li>
+                            <li>Predictive models (forecasting, churn, demand, pricing)</li>
+                            <li>Recommendation and personalization engines</li>
+                            <li>Generative AI applications built on top of large language models</li>
+                            <li>Reinforcement learning for optimization problems</li>
+                        </ul>
+                        <h4>How we deliver</h4>
+                        <p>Agile sprints, weekly demos, reproducible code, full documentation, and a clean handoff. Every model ships with monitoring, evaluation metrics, and a clear retraining strategy.</p>
+                        <div class="use-case">&ldquo;We built a document-understanding pipeline for a legal firm that reviews contracts 12&times; faster and flags risky clauses with 96% accuracy.&rdquo;</div>
+                    </div>
+                </article>
+
+                <article class="service-detail">
+                    <div class="service-head">
+                        <div class="icon">&#128202;</div>
+                        <h3>Data Analytics &amp; Insights</h3>
+                        <p class="tagline">Turn raw data into decisions.</p>
+                    </div>
+                    <div class="service-body">
+                        <p>Data without context is just noise. We connect your scattered data sources, build reliable pipelines, and surface the insights your team needs to act with confidence &mdash; delivered through dashboards, automated reports, and AI-driven narratives.</p>
+                        <h4>What we deliver</h4>
+                        <ul class="feature-list">
+                            <li>Modern data warehouse and lakehouse design (Snowflake, BigQuery, Databricks)</li>
+                            <li>ETL/ELT pipeline development and orchestration</li>
+                            <li>Interactive dashboards (Looker, Power BI, Tableau, custom)</li>
+                            <li>Predictive and prescriptive analytics</li>
+                            <li>Self-service analytics enablement for your team</li>
+                            <li>Data quality, lineage, and governance programs</li>
+                        </ul>
+                        <h4>Outcomes you can expect</h4>
+                        <p>Fastest  reporting cycles, fewer spreadsheet errors, and a single source of truth that leadership, sales, and operations all rely on.</p>
+                    </div>
+                </article>
+
+                <article class="service-detail">
+                    <div class="service-head">
+                        <div class="icon">&#129302;</div>
+                        <h3>Intelligent Process Automation</h3>
+                        <p class="tagline">Reclaim thousands of hours every year.</p>
+                    </div>
+                    <div class="service-body">
+                        <p>We combine robotic process automation (RPA) with AI to handle repetitive, rules-based, and judgment-based work &mdash; from invoice processing and onboarding to customer support triage and back-office reconciliation.</p>
+                        <h4>What we automate</h4>
+                        <ul class="feature-list">
+                            <li>Document processing and data extraction (invoices, claims, forms, emails)</li>
+                            <li>Customer support routing and first-line response</li>
+                            <li>Sales lead enrichment and CRM hygiene</li>
+                            <li>Finance and accounting close processes</li>
+                            <li>HR onboarding, screening, and policy Q&amp;A</li>
+                            <li>Multi-system workflow orchestration</li>
+                        </ul>
+                        <h4>Tech we work with</h4>
+                        <p>UiPath, Power Automate, Make, n8n, custom Python pipelines, and LLM-driven agents &mdash; whatever fits your stack and security requirements.</p>
+                    </div>
+                </article>
+
+
+                <article class="service-detail">
+                    <div class="service-head">
+                        <div class="icon">&#128640;</div>
+                        <h3>AI Integration &amp; Deployment</h3>
+                        <p class="tagline">From prototype to production, safely.</p>
+                    </div>
+                    <div class="service-body">
+                        <p>A model that lives in a notebook is not a product. We harden, containerize, and deploy AI systems into your existing infrastructure &mdash; cloud, on-prem, or hybrid &mdash; with the observability and guardrails a real business needs.</p>
+                        <h4>What we handle</h4>
+                        <ul class="feature-list">
+                            <li>API and microservice development (FastAPI, Flask, gRPC)</li>
+                            <li>Containerization with Docker and orchestration on Kubernetes</li>
+                            <li>CI/CD pipelines for ML (MLOps): training, testing, deployment</li>
+                            <li>Model monitoring, drift detection, and alerting</li>
+                            <li>Integration with CRMs, ERPs, data warehouses, and SaaS tools</li>
+                            <li>Security, compliance, and audit readiness (SOC 2, HIPAA, GDPR)</li>
+                        </ul>
+                        <h4>Our promise</h4>
+                        <p>No black boxes. Every deployment comes with runbooks, dashboards, and a clear rollback plan so your team owns what we build.</p>
+                    </div>
+                </article>
+
+                <article class="service-detail">
+                    <div class="service-head">
+                        <div class="icon">&#127891;</div>
+                        <h3>Training &amp; Ongoing Support</h3>
+                        <p class="tagline">Your team becomes the long-term owner.</p>
+                    </div>
+                    <div class="service-body">
+                        <p>Technology transfer is part of every engagement. We train your engineers, analysts, and leaders to confidently operate, extend, and evolve the AI systems we build together. And we stay in your corner long after launch.</p>
+                        <h4>Training programs</h4>
+                        <ul class="feature-list">
+                            <li>Executive AI literacy workshops for leadership</li>
+                            <li>Hands-on technical training for engineering teams</li>
+                            <li>&ldquo;AI for non-technical staff&rdquo; enablement programs</li>
+                            <li>Custom curricula for your industry and tools</li>
+                        </ul>
+                        <h4>Ongoing support</h4>
+                        <p>Optional retainer packages for model retraining, performance tuning, new feature development, and quarterly strategy reviews.</p>
+                    </div>
+                </article>
+
+
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <h2>How We Work</h2>
+                <p style="text-align:center; max-width:600px; margin: 0 auto 1rem;">A clear, predictable engagement model designed to ship value early and often.</p>
+                <div class="process-grid">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <h4>Discover</h4>
+                        <p>2&ndash;3 week deep-dive into your goals, data, and constraints.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <h4>Design</h4>
+                        <p>We define the solution architecture, success metrics, and roadmap.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <h4>Build</h4>
+                        <p>Agile sprints with weekly demos and continuous feedback loops.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <h4>Deploy</h4>
+                        <p>Production launch with monitoring, documentation, and handoff.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">5</div>
+                        <h4>Scale</h4>
+                        <p>Optimize, retrain, and expand the system as your business grows.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="services-cta">
+                    <h2>Not Sure Where to Start?</h2>
+                    <p>Book a free 30-minute consultation. We&rsquo;ll listen, ask the right questions, and tell you honestly whether (and how) AI can help your business.</p>
+                    <a href="index.html#contact" class="cta-button">Book Free Consultation</a>
+                    <a href="pricing.html" class="cta-button secondary">See Pricing</a>
+                </div>
+                <div style="text-align:center; margin-top: var(--space-xl);">
+                    <a href="index.html" class="back-link">&larr; Back to Home</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2026 Emmanuel AI Consultancy. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
+

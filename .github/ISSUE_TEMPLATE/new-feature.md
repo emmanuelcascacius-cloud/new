@@ -14,10 +14,9 @@ assignees: ''
 
 <!-- List the files that will need to be modified or created for this feature. -->
 
-- [ ] File 1
-- [ ] File 2
-- [ ] File 3
-
+- [ ] index.html
+- [ ] waitlist.html
+- [ ] 
 ## Acceptance Checklist
 
 <!-- Define the criteria that must be met for this feature to be considered complete. -->
